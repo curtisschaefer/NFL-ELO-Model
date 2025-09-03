@@ -1,0 +1,33 @@
+---
+title: "Untitled"
+output: html_document
+date: "2025-01-27"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(nflfastR)
+library(dplyr)
+library(ggplot2)
+pbp_data <- load_pbp(2024)
+```
+
+
+```{r}
+library(data.table)
+tail(setDT(pbp_data), 1000)
+
+# Define the file path (adjust as needed)
+file_path <- "~/pbp_data.csv"  # Mac/Linux example
+
+# Save the dataframe as a CSV
+write.csv(pbp_data, file = file_path, row.names = FALSE)
+
+# Print message confirming save
+cat("File saved to:", file_path)
+
+```
+
